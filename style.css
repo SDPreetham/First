@@ -1,0 +1,16 @@
+body{
+    background-color: antiquewhite !important;
+}
+.add__new__btn__mobile__only{
+    position: fixed;
+    bottom: 0;
+    right:0;
+    padding:15px 10px;
+    background-color: aliceblue;
+    width: 100%;
+}
+@media (min-width:768px){
+.add__new__btn__mobile__only{
+    display: none;
+}
+}
