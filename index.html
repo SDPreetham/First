@@ -18,10 +18,10 @@
       referrerpolicy="no-referrer"
     />
   </head>
-  <body>
+  <body onload="loadInitialData()">
 
     <!-- Mobile toggle button for adding a new item -->
-    <div class="add__new__btn__mobile__only">
+    <div class="add__new__btn__mobile__only  .d-md-none .d-lg-block">
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNewModal">
  <i class="fas fa-plus"></i>Add New Items
 </button></div>
@@ -37,7 +37,52 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        
+          <form>
+  <div class="mb-3">
+    <label for="imageUrl" class="form-label">Image URL</label>
+    <input type="url" class="form-control" id="imageUrl" placeholder="https://example.com/displayImg.png" />
+    
+  </div>
+
+   <div class="mb-3">
+    <label for="tasktitle" class="form-label">Task Title</label>
+    <input type="text" class="form-control" id="tasktitle" placeholder="Please enter your task title" required/>
+    
+  </div>
+
+  <div class="mb-3">
+    <label for="tags" class="form-label">Task Type</label>
+    <input type="url" class="form-control" id="tags" placeholder="Please enter your task title" required/>
+    
+  </div>
+
+  <div class="mb-3">
+    <label for="taskdesc" class="form-label">Task Description</label>
+    <textarea type="url" class="form-control" id="taskdesc" rows="4" placeholder="Please enter your task description" required></textarea>
+    
+  </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" onclick="postSubmit()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+ <!--Modal for viewing detailed info--> 
+ 
+ <!--Showtask Button trigger has not been displayed-->  
+ <div class="modal fade" id="showTask" tabindex="-1" aria-labelledby="showTaskLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="showTaskLabel">Task Details</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body task__modal__body">
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -46,7 +91,6 @@
     </div>
   </div>
 </div>
-    
     <!--NAV BAR-->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
@@ -95,10 +139,43 @@
       </section>
       <section class="mt-4">
         <div class="row task__contents">
-          <h5>Dummy Tag</h5>
+          <h5>The place to view card tasks on the screen</h5>
         </div>
       </section>
     </div>
+<!--RANDOM APPROACH TO DISPLAY CARD ON-SCREEN
+    <div class='col-md-6 col-lg-4 mt-3' id=${id} key=${id}>
+<div class='card shadow task__card'>
+<div class='card-header d-flex gap-2 justify-content-end task__card__header'>
+<button type='button' class ='btn btn-outline-info mr-2'name=${id}><i class='fas fa-pencil-alt'></i></button>
+<button type='button' class ='btn btn-outline-danger mr-2'name=${id}><i class='fas fa-trash-alt'></i></button>
+</div>
+<div class='card-body'>
+${
+    url &&
+    `<img src=${url} alt='card image' class='card-img-top md-3 rounded-md'/>`
+}
+<h4 class='card-title'>${title}</h4>
+<p class='card-text text-muted'>${description}</p>
+<div class='tags d-flex flex-wrap'>
+<span class='badge text-white bg-primary m-1'>${type}</span>
+</div>
+</div>
+<div class='card-footer'> 
+<button type="button" class="btn btn-outline-primary float-end" data-bs-toggle="modal" data-bs-target="#showTask">Open Task</button>
+</div>
+</div>
+</div>
+
+MODAL CHECK
+<div id=${id}>
+${
+    url &&
+    `<img src=${url} alt='card image' class='img-fluid rounded place__holder__image mb-3' />`
+}
+<strong>${date.toDateString}</strong>
+</div>-->
+
     <script src="index.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
